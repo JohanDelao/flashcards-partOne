@@ -27,9 +27,21 @@ function App() {
     setFlipped(!flipped);
   };
 
-  function increaseIndex(){
+  function increaseIndex() {
+    setIndex(() => {
+      return index + 1;
+    });
+  }
+
+  function decreaseIndex() {
+    setIndex(() => {
+      return index - 1;
+    });
+  }
+
+  function resetIndex(){
     setIndex( () => {
-      return index + 1
+      return 0;
     })
   }
 
@@ -45,7 +57,10 @@ function App() {
       </div>
 
       <div className="buttonContainer">
-        <button>
+        <button
+          className={index == 0 ? "back hidden" : "back"}
+          onClick={index == 0 ? "" : decreaseIndex}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -58,19 +73,25 @@ function App() {
             />
           </svg>
         </button>
-        <button onClick={increaseIndex}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="currentColor"
-              d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
-            />
-          </svg>
-        </button>
+        {index == flashcards.length - 1 ? (
+          <button onClick={resetIndex}>
+            <p>Reset</p>
+          </button>
+        ) : (
+          <button onClick={increaseIndex}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z"
+              />
+            </svg>
+          </button>
+        )}
       </div>
     </div>
   );

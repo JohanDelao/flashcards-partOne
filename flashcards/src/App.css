@@ -69,7 +69,21 @@ body{
   border: none;
   cursor: pointer;
 }
-
+.back.hidden{
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  cursor: default;
+}
+.back.hidden svg{
+  display: none;
+}
+button p{
+  font-size: 20px;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
+  font-weight: 600;
+}
 @media screen and (max-width: 500px) {
   .card{
     width: 300px;
