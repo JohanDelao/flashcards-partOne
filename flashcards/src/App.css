@@ -84,6 +84,10 @@ button p{
   margin: 0;
   font-weight: 600;
 }
+#reset{
+  background-color: red;
+  color: white;
+}
 @media screen and (max-width: 500px) {
   .card{
     width: 300px;

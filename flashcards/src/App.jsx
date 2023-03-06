@@ -1,8 +1,15 @@
 import { useState } from "react";
 import "./App.css";
 import Hawks from "./assets/atlantaHawks.png";
-import Nets from "./assets/brooklynNets.png";
+import Nets from "./assets/brooklynNetsLogo.png";
 import Nuggets from "./assets/Nuggets.png";
+import Grizzlies from "./assets/memphisGrizzliesLogo.png";
+import Sixers from "./assets/76ersLogo.png";
+import Pacers from "./assets/Pacers.png";
+import Raptors from "./assets/Raptors.png";
+import Lakers from "./assets/Lakers.png";
+import Bulls from "./assets/Bulls.png";
+import Bucks from "./assets/Bucks.png"
 
 function App() {
   const [index, setIndex] = useState(0);
@@ -21,6 +28,34 @@ function App() {
       image: Nuggets,
       answer: "Denver",
     },
+    {
+      image: Grizzlies,
+      answer: "Memphis"
+    },
+    {
+      image: Sixers,
+      answer: "Philadelphia"
+    },
+    {
+      image: Pacers,
+      answer: "Indiana"
+    },
+    {
+      image: Lakers,
+      answer: "Los Angeles"
+    },
+    {
+      image: Raptors,
+      answer: "Toronto"
+    },
+    {
+      image: Bulls,
+      answer: "Chicago"
+    },
+    {
+      image: Bucks,
+      answer: "Milwaukee"
+    }
   ];
 
   const handleFlip = () => {
@@ -49,7 +84,7 @@ function App() {
     <div className="container">
       <div className={`card ${flipped ? "flipped" : ""}`} onClick={handleFlip}>
         <div className="card-front">
-          <img src={flashcards[index].image} width={200}></img>
+          <img src={flashcards[index].image} height={200}></img>
         </div>
         <div className="card-back">
           <h2>{flashcards[index].answer}</h2>
@@ -74,7 +109,7 @@ function App() {
           </svg>
         </button>
         {index == flashcards.length - 1 ? (
-          <button onClick={resetIndex}>
+          <button id="reset" onClick={resetIndex}>
             <p>Reset</p>
           </button>
         ) : (
