@@ -82,6 +82,10 @@ function App() {
 
   return (
     <div className="container">
+      <div className="upperText">
+        <p className="description">Guess the NBA team's city based on their logo!</p>
+        <p className="numCards">Number of Cards: 10</p>
+      </div>
       <div className={`card ${flipped ? "flipped" : ""}`} onClick={handleFlip}>
         <div className="card-front">
           <img src={flashcards[index].image} height={200}></img>

@@ -22,4 +22,10 @@
     .Nav{
         height: fit-content;
     }
+    .inner{
+        padding-bottom: 1rem;
+    }
+    .title{
+        display: none;
+    }
 }

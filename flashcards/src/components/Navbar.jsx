@@ -6,7 +6,7 @@ export default function Navbar(){
         <div className="Nav">
             <div className='inner'>
                 <img id="nba" src={NBA} width={45}></img>
-                <h2 className='title'>Guess the NBA team’s city?</h2> 
+                <h2 className='title'>Guess the NBA team’s city!</h2> 
             </div>
         </div>
     )
