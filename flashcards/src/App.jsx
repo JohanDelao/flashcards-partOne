@@ -11,9 +11,15 @@ import Lakers from "./assets/Lakers.png";
 import Bulls from "./assets/Bulls.png";
 import Bucks from "./assets/Bucks.png"
 
+import { ToastContainer , toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
+  const toastSuccess = () => toast.success('Correct');
+  const toastIncorrect = () => toast.error('Wrong');
+  const [guess, setGuess] = useState("");
 
   const flashcards = [
     {
@@ -58,32 +64,45 @@ function App() {
     }
   ];
 
+  function clearInput(){
+    let input = document.getElementById("guess");
+    input.value = ""
+  }
+
   const handleFlip = () => {
     setFlipped(!flipped);
   };
 
   function increaseIndex() {
-    setIndex(() => {
-      return index + 1;
-    });
+    setIndex(index+1);
+    clearInput();
   }
 
   function decreaseIndex() {
     setIndex(() => {
       return index - 1;
     });
+    clearInput();
   }
 
   function resetIndex(){
     setIndex( () => {
       return 0;
     })
+    clearInput();
+  }
+
+  function checkAnswer (){
+    if(guess == flashcards[index].answer){
+      toastSuccess();
+    }else{
+      toastIncorrect();
+    }
   }
 
   return (
     <div className="container">
       <div className="upperText">
-        <p className="description">Guess the NBA team's city based on their logo!</p>
         <p className="numCards">Number of Cards: 10</p>
       </div>
       <div className={`card ${flipped ? "flipped" : ""}`} onClick={handleFlip}>
@@ -93,6 +112,11 @@ function App() {
         <div className="card-back">
           <h2>{flashcards[index].answer}</h2>
         </div>
+      </div>
+
+      <div className="answerContainer">
+        <input className="guessInput" id="guess" placeholder="Guess Answer Here!" onChange={(e) => setGuess(e.target.value)}></input>
+        <button className="guessButton" onClick={checkAnswer}>Submit</button>
       </div>
 
       <div className="buttonContainer">
@@ -132,6 +156,17 @@ function App() {
           </button>
         )}
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
